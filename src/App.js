@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home";
 import Rooms from "./Pages/Rooms";
@@ -10,12 +10,12 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/rooms" element={<Rooms />} />
-        <Route path="/rooms/:slug" element={<SingleRoom />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/rooms/" component={Rooms} />
+        <Route exact path="/rooms/:slug" component={SingleRoom} />
+        <Route component={Error} />
+      </Switch>
     </>
   );
 }
